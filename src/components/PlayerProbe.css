@@ -1,0 +1,119 @@
+.probe {
+  padding: 20px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  animation: rise 0.55s ease-out 0.06s both;
+}
+
+.probe__eyebrow {
+  margin: 0 0 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.probe__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.probe__btn {
+  min-height: 2rem;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg4);
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.probe__btn:hover {
+  border-color: var(--blue-b);
+  background: var(--bg5);
+}
+
+.probe__btn--primary {
+  background: var(--blue-soft);
+  border-color: var(--blue-b);
+  color: var(--blue);
+}
+
+.probe__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.9fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.probe__player-wrap {
+  min-width: 0;
+}
+
+.probe__video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  background: #111827;
+  border: 1px solid var(--border);
+}
+
+.probe__stream-note {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+.probe__metrics {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.probe__metrics div {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg4);
+}
+
+.probe__metrics dt {
+  margin: 0 0 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.probe__metrics dd {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: capitalize;
+  word-break: break-word;
+}
+
+.probe__status--playing {
+  color: var(--healthy-ink);
+}
+
+.probe__status--loading,
+.probe__status--waiting {
+  color: var(--watch-ink);
+}
+
+.probe__status--error {
+  color: var(--critical-ink);
+}
+
+@media (max-width: 860px) {
+  .probe__layout {
+    grid-template-columns: 1fr;
+  }
+}

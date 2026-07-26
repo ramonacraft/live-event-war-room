@@ -1,0 +1,122 @@
+.slo {
+  padding: 20px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  animation: rise 0.55s ease-out 0.08s both;
+}
+
+.slo__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.slo__item {
+  display: grid;
+  gap: 6px;
+  padding: 14px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg4);
+  border-top: 3px solid var(--teal);
+}
+
+.slo__item--watch {
+  border-top-color: var(--amber);
+}
+
+.slo__item--critical {
+  border-top-color: var(--rose);
+}
+
+.slo__item-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.slo__item h3 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink-soft);
+}
+
+.slo__level {
+  flex-shrink: 0;
+  padding: 3px 7px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+}
+
+.slo__level--healthy {
+  background: var(--teal-soft);
+  color: var(--healthy-ink);
+  border-color: var(--teal-b);
+}
+
+.slo__level--watch {
+  background: var(--amber-soft);
+  color: var(--watch-ink);
+  border-color: var(--amber-b);
+}
+
+.slo__level--critical {
+  background: var(--rose-soft);
+  color: var(--critical-ink);
+  border-color: var(--rose-b);
+}
+
+.slo__value {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.slo__value small {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.slo__desc,
+.slo__thresholds {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--ink-muted);
+}
+
+.slo__thresholds {
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+  font-weight: 600;
+}
+
+@media (max-width: 1100px) {
+  .slo__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .slo__grid {
+    grid-template-columns: 1fr;
+  }
+}

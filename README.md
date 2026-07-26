@@ -6,43 +6,7 @@ This project shows how I think about release and playback readiness in media and
 
 ## How the flow works
 
-```mermaid
-%%{init: {
-  "theme": "base",
-  "flowchart": {
-    "curve": "basis",
-    "padding": 32,
-    "nodeSpacing": 48,
-    "rankSpacing": 72
-  },
-  "themeVariables": {
-    "fontSize": "18px",
-    "fontFamily": "ui-sans-serif, system-ui, sans-serif",
-    "primaryTextColor": "#0F172A",
-    "lineColor": "#64748B",
-    "textColor": "#0F172A"
-  }
-}}%%
-flowchart LR
-  Gate["Release Gate   "]
-  Probe["Player probe   "]
-  View["Event health   "]
-  Scene["Scenarios   "]
-  Plan["Runbook   "]
-
-  Gate --> View
-  Probe --> View
-  View --> Scene
-  Scene -. parallel .-> Plan
-
-  classDef signal fill:#E0F2FE,stroke:#0284C7,stroke-width:2px,color:#0F172A
-  classDef board fill:#CCFBF1,stroke:#0D9488,stroke-width:2px,color:#0F172A
-  classDef runbook fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#0F172A
-
-  class Gate,Probe signal
-  class View,Scene board
-  class Plan runbook
-```
+![How the Live Event War Room flow works](docs/flow.svg)
 
 | Step | Color | What it is |
 |------|-------|------------|

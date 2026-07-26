@@ -101,7 +101,7 @@ src/
 | Release Gate → Azure (via Release Gate Lab) | Ready when Lab env vars are set |
 | Public deploy of this app (Vercel) | Optional next step |
 
-## Notes
+## Notes / Privacy
 
 - **Published by** [Ramona Bonitatis](https://github.com/ramonacraft).
 - **Default: no secrets.** This app runs with an empty or commented `.env`. `.env.example` has no tokens. Azure PATs and other secrets stay only in Release Gate Lab’s host env (for example Vercel), never in this repo.

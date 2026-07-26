@@ -11,46 +11,29 @@ This project shows how I think about release and playback readiness in media and
   "theme": "base",
   "flowchart": {
     "curve": "basis",
-    "padding": 28,
-    "nodeSpacing": 56,
-    "rankSpacing": 90
+    "padding": 32,
+    "nodeSpacing": 48,
+    "rankSpacing": 72
   },
   "themeVariables": {
-    "fontSize": "16px",
+    "fontSize": "18px",
     "fontFamily": "ui-sans-serif, system-ui, sans-serif",
-    "primaryColor": "#E0F2FE",
     "primaryTextColor": "#0F172A",
-    "primaryBorderColor": "#0284C7",
     "lineColor": "#64748B",
-    "textColor": "#0F172A",
-    "mainBkg": "#F8FAFC",
-    "clusterBkg": "#F8FAFC",
-    "clusterBorder": "#CBD5E1",
-    "titleColor": "#0F172A"
+    "textColor": "#0F172A"
   }
 }}%%
 flowchart LR
-  subgraph REAL["1  Real signals"]
-    direction TB
-    Gate["Release Gate"]
-    Probe["Player probe"]
-  end
-
-  subgraph BOARD["2  Live board"]
-    direction TB
-    View["Event health"]
-    Scene["Scenarios"]
-  end
-
-  subgraph BOOK["3  Living runbook"]
-    direction TB
-    Plan["Milestones + coverage"]
-  end
+  Gate["Release Gate   "]
+  Probe["Player probe   "]
+  View["Event health   "]
+  Scene["Scenarios   "]
+  Plan["Runbook   "]
 
   Gate --> View
   Probe --> View
   View --> Scene
-  BOARD -. parallel .-> BOOK
+  Scene -. parallel .-> Plan
 
   classDef signal fill:#E0F2FE,stroke:#0284C7,stroke-width:2px,color:#0F172A
   classDef board fill:#CCFBF1,stroke:#0D9488,stroke-width:2px,color:#0F172A
@@ -61,11 +44,11 @@ flowchart LR
   class Plan runbook
 ```
 
-**In plain English**
-
-1. **Real signals** — Release Gate (can we ship?) + Player probe (is playback healthy?)  
-2. **Live board** — event health, SLOs/devices, and Healthy → Degrading → Incident scenarios  
-3. **Living runbook** — milestones, coverage, and escalation running in parallel for pre-prod and production
+| Step | Color | What it is |
+|------|-------|------------|
+| **1 · Real signals** | Blue | Release Gate (can we ship?) + Player probe (is playback healthy?) |
+| **2 · Live board** | Teal | Event health, SLOs/devices, Healthy → Degrading → Incident |
+| **3 · Living runbook** | Amber | Milestones, coverage, and escalation in parallel for pre-prod and production |
 
 ## What problem this solves
 

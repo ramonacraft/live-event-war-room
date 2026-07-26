@@ -23,8 +23,9 @@ Live-event operations board + living runbook.
 - Runbook: placeholder dates, role titles only, example.com URLs as plain text (not clickable), except the in-app Live board control
 - Label live vs scenario clearly in the UI
 - Status colors always paired with text labels
-- Do not commit `.env` or tokens
-- Keep README professional and product-focused
+- Default to **no secrets** in env: ship with empty/commented `.env.example` only
+- Do not commit `.env`, PATs, or tokens (Azure stays on Release Gate Lab’s host)
+- Keep README professional and product-focused; credit publisher as Ramona Bonitatis
 
 ## Related
 

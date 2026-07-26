@@ -6,7 +6,7 @@ This project shows how I think about release and playback readiness in media and
 
 ## How the flow works
 
-![How the Live Event War Room flow works](docs/flow.svg)
+![How the Live Event War Room flow works](docs/flow.png)
 
 | Step | Color | What it is |
 |------|-------|------------|
@@ -103,6 +103,8 @@ src/
 
 ## Notes
 
+- **Published by** [Ramona Bonitatis](https://github.com/ramonacraft).
+- **Default: no secrets.** This app runs with an empty or commented `.env`. `.env.example` has no tokens. Azure PATs and other secrets stay only in Release Gate Lab’s host env (for example Vercel), never in this repo.
 - Player probe uses a **public** Mux test stream, not a production catalog or CDN.
 - Runbook contacts and links are placeholders on purpose.
 - See [AGENTS.md](./AGENTS.md) for contributor conventions in Cursor.

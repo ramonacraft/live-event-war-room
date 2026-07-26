@@ -1,8 +1,40 @@
-# Live Event War Room
+# 👩‍💻 Live Event War Room
 
 A **live-event operations board** plus a **living runbook** for pre-prod and production windows.
 
 This project shows how I think about release and playback readiness in media and streaming. The Live board mixes **real monitoring signals** with **scenario data** so you can walk Healthy → Degrading → Incident without touching a production CDN. The Runbook covers milestones, deploys, coverage, and escalation from weeks out through launch and wrap.
+
+## How the flow works
+
+```mermaid
+flowchart TB
+  subgraph real ["Real signals"]
+    Gate["Release Gate Lab<br/>Azure Pipelines · can we ship?"]
+    Probe["Player probe<br/>Public HLS · startup / rebuffer / errors"]
+  end
+
+  subgraph board ["Live board"]
+    Hero["Event health + viewers"]
+    Scenarios["Scenario view<br/>Healthy → Degrading → Incident"]
+    SLOs["Playback SLOs · devices · ops checklist"]
+  end
+
+  subgraph plan ["Living runbook"]
+    Tasks["Milestones + important tasks"]
+    Deploys["Scheduled production deploys"]
+    Coverage["Coverage + escalation"]
+  end
+
+  Gate --> Hero
+  Probe --> Hero
+  Hero --> Scenarios
+  Scenarios --> SLOs
+  Tasks --- Deploys
+  Deploys --- Coverage
+  board -.->|"runs in parallel"| plan
+```
+
+**In plain English:** real gate + probe signals feed the Live board. Scenario mode lets you practice judgment when things get rough. The Runbook sits beside the board so the plan, coverage, and escalation stay visible for pre-prod and production windows.
 
 ## What problem this solves
 

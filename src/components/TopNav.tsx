@@ -12,9 +12,8 @@ export function TopNav({ view, onChange }: Props) {
     <nav className="topnav" aria-label="War room navigation">
       <div className="topnav__center">
         <p className="topnav__logo">
-          <span aria-hidden="true">📡</span>
+          <span aria-hidden="true">👩‍💻</span>
           <span>Live Event War Room</span>
-          <span aria-hidden="true">📋</span>
         </p>
         <p className="topnav__sub">Board + living runbook</p>
         <div className="topnav__tabs" role="tablist" aria-label="Primary views">

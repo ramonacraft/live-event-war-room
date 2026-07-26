@@ -11,14 +11,12 @@ This project shows how I think about release and playback readiness in media and
   "theme": "base",
   "flowchart": {
     "curve": "basis",
-    "padding": 24,
-    "nodeSpacing": 40,
-    "rankSpacing": 80,
-    "htmlLabels": true,
-    "wrappingWidth": 180
+    "padding": 28,
+    "nodeSpacing": 56,
+    "rankSpacing": 90
   },
   "themeVariables": {
-    "fontSize": "18px",
+    "fontSize": "16px",
     "fontFamily": "ui-sans-serif, system-ui, sans-serif",
     "primaryColor": "#E0F2FE",
     "primaryTextColor": "#0F172A",
@@ -32,21 +30,21 @@ This project shows how I think about release and playback readiness in media and
   }
 }}%%
 flowchart LR
-  subgraph REAL["1 · Real signals"]
+  subgraph REAL["1  Real signals"]
     direction TB
-    Gate["Release Gate<br/>Ship ready?"]
-    Probe["Player probe<br/>Playback OK?"]
+    Gate["Release Gate"]
+    Probe["Player probe"]
   end
 
-  subgraph BOARD["2 · Live board"]
+  subgraph BOARD["2  Live board"]
     direction TB
-    View["Event health<br/>SLOs + devices"]
-    Scene["Scenarios<br/>Healthy to Incident"]
+    View["Event health"]
+    Scene["Scenarios"]
   end
 
-  subgraph BOOK["3 · Living runbook"]
+  subgraph BOOK["3  Living runbook"]
     direction TB
-    Plan["Milestones<br/>Coverage + escalate"]
+    Plan["Milestones + coverage"]
   end
 
   Gate --> View
@@ -65,9 +63,9 @@ flowchart LR
 
 **In plain English**
 
-1. **Real signals** — release gate + player probe  
-2. **Live board** — health view + scenario walkthrough  
-3. **Living runbook** — plan, coverage, and escalation running in parallel for pre-prod and production
+1. **Real signals** — Release Gate (can we ship?) + Player probe (is playback healthy?)  
+2. **Live board** — event health, SLOs/devices, and Healthy → Degrading → Incident scenarios  
+3. **Living runbook** — milestones, coverage, and escalation running in parallel for pre-prod and production
 
 ## What problem this solves
 

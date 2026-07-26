@@ -7,34 +7,66 @@ This project shows how I think about release and playback readiness in media and
 ## How the flow works
 
 ```mermaid
-flowchart TB
-  subgraph real ["Real signals"]
-    Gate["Release Gate Lab<br/>Azure Pipelines · can we ship?"]
-    Probe["Player probe<br/>Public HLS · startup / rebuffer / errors"]
+%%{init: {
+  "theme": "base",
+  "flowchart": { "curve": "basis", "padding": 20, "nodeSpacing": 50, "rankSpacing": 70 },
+  "themeVariables": {
+    "fontSize": "20px",
+    "fontFamily": "ui-sans-serif, system-ui, sans-serif",
+    "primaryColor": "#E0F2FE",
+    "primaryTextColor": "#0F172A",
+    "primaryBorderColor": "#0284C7",
+    "secondaryColor": "#CCFBF1",
+    "secondaryTextColor": "#0F172A",
+    "secondaryBorderColor": "#0D9488",
+    "tertiaryColor": "#FEF3C7",
+    "tertiaryTextColor": "#0F172A",
+    "tertiaryBorderColor": "#D97706",
+    "lineColor": "#64748B",
+    "textColor": "#0F172A",
+    "mainBkg": "#F8FAFC",
+    "clusterBkg": "#F8FAFC",
+    "clusterBorder": "#CBD5E1",
+    "titleColor": "#0F172A"
+  }
+}}%%
+flowchart LR
+  subgraph REAL["1 · Real signals"]
+    direction TB
+    Gate["Release Gate<br/>Can we ship?"]
+    Probe["Player probe<br/>Is playback healthy?"]
   end
 
-  subgraph board ["Live board"]
-    Hero["Event health + viewers"]
-    Scenarios["Scenario view<br/>Healthy → Degrading → Incident"]
-    SLOs["Playback SLOs · devices · ops checklist"]
+  subgraph BOARD["2 · Live board"]
+    direction TB
+    View["Event health<br/>SLOs · devices · checklist"]
+    Scene["Scenarios<br/>Healthy → Degrading → Incident"]
   end
 
-  subgraph plan ["Living runbook"]
-    Tasks["Milestones + important tasks"]
-    Deploys["Scheduled production deploys"]
-    Coverage["Coverage + escalation"]
+  subgraph BOOK["3 · Living runbook"]
+    direction TB
+    Plan["Milestones · deploys<br/>Coverage · escalation"]
   end
 
-  Gate --> Hero
-  Probe --> Hero
-  Hero --> Scenarios
-  Scenarios --> SLOs
-  Tasks --- Deploys
-  Deploys --- Coverage
-  board -.->|"runs in parallel"| plan
+  Gate --> View
+  Probe --> View
+  View --> Scene
+  BOARD -. parallel .-> BOOK
+
+  classDef signal fill:#E0F2FE,stroke:#0284C7,stroke-width:2px,color:#0F172A
+  classDef board fill:#CCFBF1,stroke:#0D9488,stroke-width:2px,color:#0F172A
+  classDef runbook fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#0F172A
+
+  class Gate,Probe signal
+  class View,Scene board
+  class Plan runbook
 ```
 
-**In plain English:** real gate + probe signals feed the Live board. Scenario mode lets you practice judgment when things get rough. The Runbook sits beside the board so the plan, coverage, and escalation stay visible for pre-prod and production windows.
+**In plain English**
+
+1. **Real signals** — release gate + player probe  
+2. **Live board** — health view + scenario walkthrough  
+3. **Living runbook** — plan, coverage, and escalation running in parallel for pre-prod and production
 
 ## What problem this solves
 

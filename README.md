@@ -9,19 +9,20 @@ This project shows how I think about release and playback readiness in media and
 ```mermaid
 %%{init: {
   "theme": "base",
-  "flowchart": { "curve": "basis", "padding": 20, "nodeSpacing": 50, "rankSpacing": 70 },
+  "flowchart": {
+    "curve": "basis",
+    "padding": 24,
+    "nodeSpacing": 40,
+    "rankSpacing": 80,
+    "htmlLabels": true,
+    "wrappingWidth": 180
+  },
   "themeVariables": {
-    "fontSize": "20px",
+    "fontSize": "18px",
     "fontFamily": "ui-sans-serif, system-ui, sans-serif",
     "primaryColor": "#E0F2FE",
     "primaryTextColor": "#0F172A",
     "primaryBorderColor": "#0284C7",
-    "secondaryColor": "#CCFBF1",
-    "secondaryTextColor": "#0F172A",
-    "secondaryBorderColor": "#0D9488",
-    "tertiaryColor": "#FEF3C7",
-    "tertiaryTextColor": "#0F172A",
-    "tertiaryBorderColor": "#D97706",
     "lineColor": "#64748B",
     "textColor": "#0F172A",
     "mainBkg": "#F8FAFC",
@@ -33,19 +34,19 @@ This project shows how I think about release and playback readiness in media and
 flowchart LR
   subgraph REAL["1 · Real signals"]
     direction TB
-    Gate["Release Gate<br/>Can we ship?"]
-    Probe["Player probe<br/>Is playback healthy?"]
+    Gate["Release Gate<br/>Ship ready?"]
+    Probe["Player probe<br/>Playback OK?"]
   end
 
   subgraph BOARD["2 · Live board"]
     direction TB
-    View["Event health<br/>SLOs · devices · checklist"]
-    Scene["Scenarios<br/>Healthy → Degrading → Incident"]
+    View["Event health<br/>SLOs + devices"]
+    Scene["Scenarios<br/>Healthy to Incident"]
   end
 
   subgraph BOOK["3 · Living runbook"]
     direction TB
-    Plan["Milestones · deploys<br/>Coverage · escalation"]
+    Plan["Milestones<br/>Coverage + escalate"]
   end
 
   Gate --> View
